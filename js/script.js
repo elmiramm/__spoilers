@@ -101,6 +101,7 @@ if (spoilersArray.length > 0) {
 			const spoilerTitle = el.hasAttribute('data-spoiler') ? el : el.closest('[data-spoiler]');
 			const spoilersBlock = spoilerTitle.closest('[data-spoilers]');
 			const oneSpoiler = spoilersBlock.hasAttribute('data-one-spoiler') ? true : false;
+
 			if (!spoilersBlock.querySelectorAll('._slide').length) {
 				if (oneSpoiler && !spoilerTitle.classList.contains('_active')) {
 					hideSpoilerBody(spoilersBlock);
@@ -112,7 +113,8 @@ if (spoilersArray.length > 0) {
 		}
 	}
 	function hideSpoilerBody(spoilersBlock) {
-		const spoilerActiveTitle = spoilersBlock.querySelectorAll('[data-spoiler]._active');
+		const spoilerActiveTitle = spoilersBlock.querySelector('[data-spoiler]._active');
+
 		if (spoilerActiveTitle) {
 			spoilerActiveTitle.classList.remove('_active');
 			_slideUp(spoilerActiveTitle.nextElementSibling, 500);
